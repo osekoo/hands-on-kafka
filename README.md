@@ -1,2 +1,3 @@
-# hands-on-kafka
-Hands-on Kafka
+# Objectifs
+L'objectif de cette session pratique est:
+-
