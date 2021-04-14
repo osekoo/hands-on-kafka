@@ -3,7 +3,7 @@
 Dans cette session pratique, nous allons: 
 - comprendre le fonctionnement de Kafka et ses différentes terminologies
 - déployer un cluster Kafka
-- metre en oeuvre une application de traitement de données en mode streaming
+- metre en oeuvre une application Python de traitement de données en mode streaming
 - écrire et lire des donnnées
 - ...
 
