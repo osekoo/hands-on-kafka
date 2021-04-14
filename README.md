@@ -29,3 +29,6 @@ Vous pouvez ignorer cette section si vous avez déjà ces deux outils installés
 Le tutorial pour installer/configurer ces deux outils sont disponibles [ici](https://github.com/osekoo/hands-on-spark-scala#pr%C3%A9requis).  
 
 # Lab Session
+## Cluster Kafka
+Nous allons utiliser les images bitnami de Kafka pour exécuter Kafka sur notre machine locale.  
+Le fichier [docker-compose.yaml]() contient le script pour lancer localement Kafka.  
