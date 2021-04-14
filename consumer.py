@@ -3,6 +3,8 @@ import json
 
 from kafka import KafkaConsumer
 
+from config import BOOTSTRAP_SERVER, TOPIC_NAME
+
 
 def data_deserializer(data):
     """
@@ -20,12 +22,13 @@ def receive(consumer):
 
 
 print('connecting the consumer to Kafka bootstrap server...')
-consumer_handler = KafkaConsumer('my-topic',
-                                 bootstrap_servers='localhost:9092',
+consumer_handler = KafkaConsumer(TOPIC_NAME,
+                                 bootstrap_servers=BOOTSTRAP_SERVER,
                                  value_deserializer=data_deserializer,
                                  auto_offset_reset='earliest',
                                  enable_auto_commit=True,
                                  group_id='my-consumer-group')
 
-print('reading data from Kafka...')
-receive(consumer_handler)
+if __name__ == "__main__":
+    print('reading data from Kafka...')
+    receive(consumer_handler)
