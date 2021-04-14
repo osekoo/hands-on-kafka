@@ -22,6 +22,8 @@ Commande spéciale pour Ubuntu 16.04 ou plus:
 sudo snap install pycharm-community --classic
 ```
 Note: votre compte étudiant de Dauphine vous donne accès gratuitement à la version Ultimate. Pour cela, il suffit de vous enregistrer avec votre adresse mail de Dauphine et de valider l'inscription.
+
+Je vous invite à prendre en main PyCharm avec cet excelent [tutorial](https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html#create-file)
   
 ## Docker et docker-compose
 Lors de cette session nous allons lancer et gérer le cluster Kafka via docker et docker-compose.  
