@@ -1,0 +1,57 @@
+version: '3.5'
+networks:
+  backend:
+    name: backend
+    
+volumes:
+  db-data:
+  kafka:
+
+# kafka broker service
+kafka-broker:
+  image: bitnami/kafka:2.3.1
+  hostname: kafka-broker
+  container_name: kafka-broker
+  restart: unless-stopped
+  ports:
+    - "9092:9092"
+  expose:
+    - "9093"
+  environment:
+    - KAFKA_BROKER_ID=1
+    - ALLOW_PLAINTEXT_LISTENER=yes
+  volumes:
+    - /var/run/docker.sock:/var/run/docker.sock
+    - kafka:/bitnami/kafka
+    - ./kafka.properties:/opt/bitnami/kafka/conf/server.properties
+  networks:
+    - backend
+
+# zookeeper service
+zookeeper:
+  image: bitnami/zookeeper:3.6.2
+  hostname: zookeeper
+  container_name: zookeeper
+  restart: unless-stopped
+  ports:
+    - "2181:2181"
+  environment:
+    - ALLOW_ANONYMOUS_LOGIN=yes
+  networks:
+    - backend
+
+
+# kafka administration UI service
+kafkaui:
+  image: obsidiandynamics/kafdrop:3.27.0
+  hostname: kafkaui
+  container_name: kafkaui
+  restart: unless-stopped
+  ports:
+    - "9094:9000"
+  environment:
+    - KAFKA_BROKERCONNECT=kafka-broker:9093
+  depends_on:
+    - kafka-broker
+  networks:
+    - backend
