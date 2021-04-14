@@ -11,7 +11,7 @@ Dans cette session pratique, nous allons:
 # Pré-requis
 _A faire avant la session pratique._
 
-## Installation de PyCharm
+## PyCharm
 [PyCharm](https://www.jetbrains.com/pycharm/download/) est un IDE permettant de développer des applications en Python.
 Nous allons l'utiliser lors de cette session pratique car il intègre plusieurs outils qui facilitent et accélèrent le développement des applications Python.  
   
@@ -23,7 +23,7 @@ sudo snap install pycharm-community --classic
 ```
 Note: votre compte étudiant de Dauphine vous donne accès gratuitement à la version Ultimate. Pour cela, il suffit de vous enregistrer avec votre adresse mail de Dauphine et de valider l'inscription.
   
-## Docker/DOcker-compose
+## Docker et docker-compose
 Lors de cette session nous allons lancer et gérer le cluster Kafka via docker et docker-compose.  
 Vous pouvez ignorer cette section si vous avez déjà ces deux outils installés sur votre machine.  
 Le tutorial pour installer/configurer ces deux outils sont disponibles [ici](https://github.com/osekoo/hands-on-spark-scala#pr%C3%A9requis).  
