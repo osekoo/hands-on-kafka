@@ -26,17 +26,17 @@ services:
     networks:
       - kafka-network
 
-  kafka-broker-sub:
-    image: bitnami/kafka:2.3.1
-    restart: unless-stopped
-    ports:
-      - "9092"
-    environment:
-      - ALLOW_PLAINTEXT_LISTENER=yes
-    volumes:
-      - ./kafka-sub.properties:/opt/bitnami/kafka/conf/server.properties
-    networks:
-      - kafka-network
+#  kafka-broker-sub:
+#    image: bitnami/kafka:2.3.1
+#    restart: unless-stopped
+#    ports:
+#      - "9092"
+#    environment:
+#      - ALLOW_PLAINTEXT_LISTENER=yes
+#    volumes:
+#      - ./kafka-sub.properties:/opt/bitnami/kafka/conf/server.properties
+#    networks:
+#      - kafka-network
 
   # zookeeper service
   zookeeper:
