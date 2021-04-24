@@ -1,3 +1,5 @@
+![image](https://user-images.githubusercontent.com/49156499/115967379-9e6fb180-a532-11eb-8142-428a455a6454.png)
+
 # Objectifs  
 
 Dans cette session pratique, nous allons: 
