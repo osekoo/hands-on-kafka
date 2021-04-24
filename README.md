@@ -64,7 +64,7 @@ Le module `dico` permet de chercher la définition des mots sur Internet. Il sup
 - `client.py`: publie dans Kafka la requête de recherche de définition (producer) et lit au retour la réponse (consumer). Il faut cliquer sur la flêche verte à côté de `if __name__ == "__main__":` pour exécuter le client. Vous devez spécifier votre pseudonyme (utilisé pour créer le topic qui servira à lire les réponses) et la langue de recherche (`fr` pour Français ou `en` pour Anglais).
 - `kafka_data.py`: implémente les structures de données échanger entre les clients et les workers à travers Kafka.
 
-![image](https://user-images.githubusercontent.com/49156499/115967148-3ec4d680-a531-11eb-905a-b583ec11349c.png)
+![image](https://user-images.githubusercontent.com/49156499/115967493-2f468d00-a533-11eb-86c4-fa82c7ec9f3d.png)
 
 
 ## Pour aller plus loin
