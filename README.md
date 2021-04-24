@@ -31,7 +31,9 @@ Vous pouvez ignorer cette section si vous avez déjà ces deux outils installés
 Le tutorial pour installer/configurer ces deux outils sont disponibles [ici](https://github.com/osekoo/hands-on-spark-scala#pr%C3%A9requis).  
 
 # Lab Session
-Le code source de cette partie est disponible dans ce repository. Vous pouvez le récupérer en utilisant [git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git) ou en téléchargeant l'archive.  
+Le code source de cette partie est disponible dans ce [repository](https://github.com/osekoo/hands-on-kafka). Vous pouvez le récupérer en utilisant [git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git) ou en téléchargeant l'archive.  
+![image](https://user-images.githubusercontent.com/49156499/115967302-3325df80-a532-11eb-825c-58343a02118b.png)
+
 Nous allons étudier deux cas:
 - <b>get_started</b>: une application simple d'écriture et de lecture de données. Il permet de comprendre les différents mécanismes de Kafka (producers, consumers, consumer group, etc).
 - <b>dico</b>: une application plus ou moins évoluée qui implémente la recherche de définition des mots sur internet (dictionaire). L'application support le Français et l'Anglais.
