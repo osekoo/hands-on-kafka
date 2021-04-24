@@ -49,7 +49,7 @@ Le module `get_started` permet publier et lire des messages. Il contient 3 fichi
 
 Après exécution de ces deux fichiers, vous pouvez analyser les informations affichées sur le dashboard.  
 
-# Le programme `dico`
+## Le programme `dico`
 Le module `dico` permet de chercher la définition des mots sur Internet. Il support le Français (le Robert) et l'Anglais (dictionary.com). Ce module contient 5 fichiers:
 - `config.py`: contient les variables globales.
 - `crawler.py`: permet de chercher la définition des mots sur Internet en Français (`CrawlerFR`) et en Anglais (`CrawlerEN`).
