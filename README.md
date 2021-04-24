@@ -49,14 +49,28 @@ Le module `get_started` permet publier et lire des messages. Il contient 3 fichi
 
 Après exécution de ces deux fichiers, vous pouvez analyser les informations affichées sur le dashboard.  
 
+![image](https://user-images.githubusercontent.com/49156499/115967255-da564700-a531-11eb-9a5d-de7ac64d5e67.png)
+
+
 ## Le programme `dico`
-Le module `dico` permet de chercher la définition des mots sur Internet. Il support le Français (le Robert) et l'Anglais (dictionary.com). Ce module contient 5 fichiers:
-- `config.py`: contient les variables globales.
+Le module `dico` permet de chercher la définition des mots sur Internet. Il support le Français (Le Robert) et l'Anglais (dictionary.com). Ce module contient 5 fichiers:
+- `config.py`: contient les variables globales (noms des topics, noms des dictionnaire, etc.).
 - `crawler.py`: permet de chercher la définition des mots sur Internet en Français (`CrawlerFR`) et en Anglais (`CrawlerEN`).
 - `worker.py`: lit les requêtes de recherche postées dans le bus Kafka (consumer), effectue la recherche en utilisant le crawler (processor) et republie le résultat dans Kafka (producer). Il faut cliquer sur la flêche verte à côté de `if __name__ == "__main__":` pour exécuter le worker. Vous devez spécifier la langue de recherche (`fr` pour Français ou `en` pour Anglais).
 - `client.py`: publie dans Kafka la requête de recherche de définition (producer) et lit au retour la réponse (consumer). Il faut cliquer sur la flêche verte à côté de `if __name__ == "__main__":` pour exécuter le client. Vous devez spécifier votre pseudonyme (utilisé pour créer le topic qui servira à lire les réponses) et la langue de recherche (`fr` pour Français ou `en` pour Anglais).
 - `kafka_data.py`: implémente les structures de données échanger entre les clients et les workers à travers Kafka.
 
+![image](https://user-images.githubusercontent.com/49156499/115967148-3ec4d680-a531-11eb-905a-b583ec11349c.png)
 
+
+## Pour aller plus loin
+Implémentez une application de data pipeline ayant les fonctionnalités suivantes:
+- un utilisateur envoie une URL contenant du text sur un topic (url-topic)
+- un premier groupe de consumers lit l'URL et réalise un WordCount sur le contenu de l'URL. Il publie ensuite le résultat de word count (liste de mots et leurs occurrences) dans Kafka (wordcount-topic)
+- un deuxième groupe de consumers lit le resultat word count et cherche la définition de chaque mot. Il renvoie ensuite au client la liste des mots avec leurs occurrences et leur définition.
+
+L'application doit supporter au moins deux langues.
+
+![image](https://user-images.githubusercontent.com/49156499/115966931-1be5f280-a530-11eb-9e01-08d84162c0de.png)
 
 
