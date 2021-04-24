@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+
 class Crawler:
     def get_definition(self, word: str):
         pass

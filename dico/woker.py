@@ -3,7 +3,7 @@ from kafka import KafkaConsumer, KafkaProducer
 
 from dico.crawler import Crawler, CrawlerEN, CrawlerFR
 from dico.kafka_data import KafkaRequest, KafkaResponse
-from dico.config import BOOTSTRAP_SERVER, TOPIC_DICO_FR, TOPIC_DICO_EN
+from dico.config import BOOTSTRAP_SERVER, TOPIC_DICO_FR, TOPIC_DICO_EN, LANGUAGE_EN
 
 
 class KafkaWorker:
@@ -15,6 +15,10 @@ class KafkaWorker:
         self.producer = None
 
     def connect(self):
+        """
+        Connects the consumer (reading word request) and the producer (sending back the definition) to Kafka
+        :return:
+        """
         self.consumer = KafkaConsumer(self.topic_name,
                                       bootstrap_servers=BOOTSTRAP_SERVER,
                                       value_deserializer=self.data_deserializer,
@@ -63,12 +67,11 @@ class KafkaWorker:
 
 
 if __name__ == "__main__":
-    worker = None
-    dico_name = input('Which dictionary? ')
-    if dico_name == 'en':
+    dico_name = input('Which dictionary ([fr]/en)? ')
+    if dico_name == LANGUAGE_EN:
         worker = KafkaWorker(TOPIC_DICO_EN, CrawlerEN())
     else:
         worker = KafkaWorker(TOPIC_DICO_FR, CrawlerFR())
 
-    print(f'dico worker {dico_name} worker started.')
+    print(f'dico worker `{dico_name}` started.')
     worker.consume()

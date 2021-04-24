@@ -64,15 +64,15 @@ class KafkaClient:
 
 
 if __name__ == "__main__":
-    dico_name = input('Which dictionary? ')
-    dico_name = TOPIC_DICO_EN if dico_name == 'en' else TOPIC_DICO_FR
-
     your_name = input('Your nickname? ')
 
-    def_producer = KafkaClient(dico_name, dico_name + '-' + your_name)
+    dico_name = input('Which dictionary? ')
+    topic = TOPIC_DICO_EN if dico_name == 'en' else TOPIC_DICO_FR
+
+    def_producer = KafkaClient(topic, topic + '-' + your_name)
 
     reading_thread = threading.Thread(target=def_producer.read_definition)
     reading_thread.start()
 
-    print(f'dico client {dico_name} started.')
+    print(f'dico client \'{topic}\' started.')
     def_producer.produce()
