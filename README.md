@@ -74,4 +74,4 @@ Implémentez une application de data pipeline ayant les fonctionnalités suivant
 
 L'application doit supporter au moins deux langues.
 
-![image](https://user-images.githubusercontent.com/49156499/115966931-1be5f280-a530-11eb-9e01-08d84162c0de.png)
+![image](https://user-images.githubusercontent.com/49156499/116002149-a1cd7080-a5f8-11eb-968e-1ba077a3c7af.png)
