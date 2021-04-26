@@ -42,7 +42,7 @@ Nous allons étudier deux cas:
 ## Cluster Kafka
 Nous allons utiliser les images bitnami de [Kafka](https://github.com/bitnami/bitnami-docker-kafka) pour exécuter Kafka sur notre machine locale.  
 Le fichier `./docker-compose.yaml` (disponible à la racine) contient le script pour lancer localement Kafka.  Il suffit d'exécuter la ligne de commande `docker-compose up` pour lancer le broker kafka.
-Le fichier contient également un service nommé `kafkaui` ([kafdrop](https://github.com/obsidiandynamics/kafdrop))qui permet d'accéder au dashboard de kafka. L'accès à ce dashboard se fait via un browser à l'adresse http://localhost:8080. Nous verrons ensemble les informations disponibles sur ce dashboard.  
+Le fichier contient également un service nommé `kafkaui` ([kafdrop](https://github.com/obsidiandynamics/kafdrop) qui permet d'accéder au dashboard de kafka. L'accès à ce dashboard se fait via un browser à l'adresse http://localhost:8080. Nous verrons ensemble les informations disponibles sur ce dashboard.  
 
 ## Le module `get_started`
 Le module `get_started` permet de publier et de lire des messages. Il contient 3 fichiers:
@@ -50,28 +50,31 @@ Le module `get_started` permet de publier et de lire des messages. Il contient 3
 - `producer.py`: permet de publier une série de messages dans le bus Kafka. Dans Pycharm, cliquez sur la flèche verte à côté de la ligne `if __name__ == "__main__":` pour exécuter le producer.
 - `consumer.py`: permet de lire les messages publiés par le consumer.
 
-Après exécution de ces deux fichiers, vous pouvez analyser les informations affichées sur le dashboard.  
+Après exécution de ces deux fichiers, vous pouvez analyser les informations affichées sur le [dashboard](http://localhost:8080).  
 
 ![image](https://user-images.githubusercontent.com/49156499/115967255-da564700-a531-11eb-9a5d-de7ac64d5e67.png)
 
 
 ## Le module `dico`
-Le module `dico` permet de chercher la définition des mots sur Internet. Il supporte le Français (lerobert.com) et l'Anglais (dictionary.com). Ce module contient 5 fichiers:
+Le module `dico` permet de chercher la définition d'un mot sur Internet. Il supporte le Français (lerobert.com) et l'Anglais (dictionary.com). Ce module contient 5 fichiers:
 - `config.py`: contient les variables globales (noms des topics, noms des dictionnaires, etc.).
-- `crawler.py`: permet de chercher la définition des mots sur Internet en français (`CrawlerFR`) et en anglais (`CrawlerEN`).
-- `worker.py`: lit les requêtes de recherche postées dans le bus Kafka (consumer), effectue la recherche en utilisant le crawler (processor) et republie le résultat dans Kafka (producer). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le worker. Vous devez spécifier la langue de recherche (`fr` pour Français ou `en` pour Anglais).
-- `client.py`: publie dans Kafka la requête de recherche de définition (producer) et lit au retour la réponse (consumer). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le client. Vous devez spécifier votre pseudonyme (utilisé pour créer le topic qui servira à lire les réponses) et la langue de recherche (`fr` pour Français ou `en` pour Anglais).
-- `kafka_data.py`: implémente les structures de données échanger entre les clients et les workers à travers Kafka.
+- `crawler.py`: permet de chercher la définition des mots sur Internet en français (`CrawlerFR`) et en anglais (`CrawlerEN`). Cette classe extrait la définition des en parsant la source HTML du résultat de recherche. Le parsing peut parfois échoué si la structure HTML de la page change.
+- `worker.py`: contient une class (`Worker`) qui permet de lire les requêtes de recherche postées dans le bus Kafka (en mode `consumer`), effectue la recherche en utilisant le crawler (`data processing`) et republie le résultat dans Kafka (en mode `producer`). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le worker. Vous devez spécifier la langue de recherche (`fr` pour Français ou `en` pour Anglais) à l'invite commande.
+- `client.py`: publie dans Kafka la requête de recherche de définition (en mode `producer`) et lit au retour la réponse (en mode `consumer`). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le client. Vous devez spécifier votre pseudonyme (utilisé pour créer le topic qui servira à lire les réponses) et la langue de recherche (`fr` pour Français ou `en` pour Anglais).
+- `kafka_data.py`: implémente les structures de données (`KafkaRequest`, `KafkaResponse`) échanger entre les clients et les workers à travers Kafka.
 
 ![image](https://user-images.githubusercontent.com/49156499/115967493-2f468d00-a533-11eb-86c4-fa82c7ec9f3d.png)
 
 
 ## Pour aller plus loin
 Implémentez une application de data pipeline ayant les fonctionnalités suivantes:
-- un utilisateur envoie une URL contenant du text sur un topic (url-topic)
-- un premier groupe de consumers lit l'URL et réalise un WordCount sur le contenu de l'URL. Il publie ensuite le résultat de word count (liste de mots et leurs occurrences) dans Kafka (wordcount-topic)
-- un deuxième groupe de consumers lit le résultat word count et cherche la définition de chaque mot. Il renvoie ensuite au client la liste des mots avec leurs occurrences et leur définition.
+- un utilisateur envoie sur un topic Kafka une URL d'un site Internet contenant du texte,
+- un premier groupe de consumers lit l'URL, récupère le contenu de l'URL et réalise un WordCount sur ce contenu. Il publie ensuite le résultat de wordCount (liste de mots et leur occurrence) dans Kafka,
+- un deuxième groupe de consumers lit le résultat de wordCount et cherche la définition de chaque mot. Il renvoie ensuite au client la liste des mots avec leur occurrence et leur définition.
+- l'utilisateur lit ce résultat et... l'enregistre dans une base de données!
 
 L'application doit supporter au moins deux langues.
+
+Quelles sont les applications possible d'un tel programme?
 
 ![image](https://user-images.githubusercontent.com/49156499/116002149-a1cd7080-a5f8-11eb-968e-1ba077a3c7af.png)
