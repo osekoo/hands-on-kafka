@@ -5,7 +5,7 @@
 Dans cette session pratique, nous allons: 
 - comprendre le fonctionnement de Kafka et ses différentes terminologies
 - déployer et configurer un cluster Kafka
-- mettre en oeuvre une application Python de traitement de données
+- mettre en oeuvre une application de traitement de données en Python
 - ...
 
 
