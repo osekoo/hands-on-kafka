@@ -41,7 +41,7 @@ Nous allons étudier deux cas:
 
 ## Cluster Kafka
 Nous allons utiliser les images bitnami de [Kafka](https://github.com/bitnami/bitnami-docker-kafka) pour exécuter Kafka sur notre machine locale.  
-Le fichier `./docker-compose.yaml` contient le script pour lancer localement Kafka.  Il suffit d'exécuter la ligne de commande `docker-compose up` pour lancer le broker kafka.
+Le fichier `./docker-compose.yaml` (disponible à la racine) contient le script pour lancer localement Kafka.  Il suffit d'exécuter la ligne de commande `docker-compose up` pour lancer le broker kafka.
 Le fichier contient également un service nommé `kafkaui` ([kafdrop](https://github.com/obsidiandynamics/kafdrop))qui permet d'accéder au dashboard de kafka. L'accès à ce dashboard se fait via un browser à l'adresse http://localhost:8080. Nous verrons ensemble les informations disponibles sur ce dashboard.  
 
 ## Le module `get_started`
