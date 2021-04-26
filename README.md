@@ -14,7 +14,7 @@ _A faire avant la session pratique._
 
 ## PyCharm
 [PyCharm](https://www.jetbrains.com/pycharm/download/) est un IDE permettant de développer des applications en Python.
-Nous allons l'utiliser lors de cette session pratique car il intègre plusieurs outils qui facilitent et accélèrent le développement des applications Python.  
+Nous allons l'utiliser lors de cette session pratique car il intègre plusieurs outils qui facilitent et accélèrent le développement des applications.  
   
 La version PyCharm Community est disponible [ici](https://www.jetbrains.com/pycharm/download/).  
 Téléchargez et installez la version compatible avec votre machine.
@@ -24,10 +24,10 @@ sudo snap install pycharm-community --classic
 ```
 Note: votre compte étudiant de Dauphine vous donne accès gratuitement à la version Ultimate. Pour cela, il suffit de vous enregistrer avec votre adresse mail de Dauphine et de valider l'inscription.
 
-Je vous invite à prendre en main PyCharm avec ce [tutoriel](https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html#create-file)
+Je vous invite à prendre en main PyCharm avec ce [tutoriel](https://www.jetbrains.com/help/pycharm/creating-and-running-your-first-python-project.html#create-file).
   
 ## Docker et docker-compose
-Lors de cette session nous allons lancer et gérer le cluster Kafka via docker et docker-compose.  
+Lors de cette session nous allons exécuter et gérer le cluster Kafka en utilisant docker et docker-compose.  
 Vous pouvez ignorer cette section si vous avez déjà ces deux outils installés sur votre machine.  
 Le tutoriel pour installer/configurer ces deux outils sont disponibles [ici](https://github.com/osekoo/hands-on-spark-scala#pr%C3%A9requis).  
 
@@ -37,12 +37,12 @@ Le code source de cette partie est disponible dans ce [repository](https://githu
 
 Nous allons étudier deux cas:
 - <b>get_started</b>: une application simple d'écriture et de lecture de données. Il permet de comprendre les différents mécanismes de Kafka (producers, consumers, consumer group, etc).
-- <b>dico</b>: une application plus ou moins évoluée qui implémente la recherche de définition des mots sur internet (dictionnaire).  
+- <b>dico</b>: une application asynchrone de recherche de définition des mots sur internet (dictionnaire).  
 
 ## Cluster Kafka
-Nous allons utiliser les images bitnami de Kafka pour exécuter Kafka sur notre machine locale.  
+Nous allons utiliser les images bitnami de [Kafka](https://github.com/bitnami/bitnami-docker-kafka) pour exécuter Kafka sur notre machine locale.  
 Le fichier `./docker-compose.yaml` contient le script pour lancer localement Kafka.  Il suffit d'exécuter la ligne de commande `docker-compose up` pour lancer le broker kafka.
-Le fichier contient également un service nommé `kafkaui` qui permet d'accéder au dashboard de kafka. L'accès à ce dashboard se fait via un browser à l'adresse http://localhost:8080. Nous verrons ensemble les informations disponibles sur ce dashboard.  
+Le fichier contient également un service nommé `kafkaui` ([kafdrop](https://github.com/obsidiandynamics/kafdrop))qui permet d'accéder au dashboard de kafka. L'accès à ce dashboard se fait via un browser à l'adresse http://localhost:8080. Nous verrons ensemble les informations disponibles sur ce dashboard.  
 
 ## Le module `get_started`
 Le module `get_started` permet de publier et de lire des messages. Il contient 3 fichiers:
