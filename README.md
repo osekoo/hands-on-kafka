@@ -56,22 +56,23 @@ Après exécution de ces deux fichiers, vous pouvez analyser les informations af
 
 
 ## Le module `dico`
-Le module `dico` permet de chercher la définition d'un mot sur Internet. Il supporte le Français (lerobert.com) et l'Anglais (dictionary.com). Ce module contient 5 fichiers:
+Le module `dico` permet de chercher la définition d'un mot sur Internet. Il supporte le français (lerobert.com) et l'anglais (dictionary.com). Ce module contient 5 fichiers:
 - `config.py`: contient les variables globales (noms des topics, noms des dictionnaires, etc.).
 - `crawler.py`: permet de chercher la définition des mots sur Internet en français (`CrawlerFR`) et en anglais (`CrawlerEN`). Cette classe extrait la définition des en parsant la source HTML du résultat de recherche. Le parsing peut parfois échoué si la structure HTML de la page change.
-- `worker.py`: contient une class (`Worker`) qui permet de lire les requêtes de recherche postées dans le bus Kafka (en mode `consumer`), effectue la recherche en utilisant le crawler (`data processing`) et republie le résultat dans Kafka (en mode `producer`). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le worker. Vous devez spécifier la langue de recherche (`fr` pour Français ou `en` pour Anglais) à l'invite commande.
-- `client.py`: publie dans Kafka la requête de recherche de définition (en mode `producer`) et lit au retour la réponse (en mode `consumer`). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le client. Vous devez spécifier votre pseudonyme (utilisé pour créer le topic qui servira à lire les réponses) et la langue de recherche (`fr` pour Français ou `en` pour Anglais).
+- `worker.py`: contient une class (`Worker`) qui permet de lire les requêtes de recherche postées dans le bus Kafka (en mode `consumer`), effectue la recherche en utilisant le crawler (`data processing`) et republie le résultat dans Kafka (en mode `producer`). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le worker. Vous devez spécifier la langue de recherche (`fr` pour français ou `en` pour anglais) à l'invite commande.
+- `client.py`: publie dans Kafka la requête de recherche de définition (en mode `producer`) et lit au retour la réponse (en mode `consumer`). Il faut cliquer sur la flèche verte à côté de `if __name__ == "__main__":` pour exécuter le client. Vous devez spécifier votre pseudonyme (utilisé pour créer le topic qui servira à lire les réponses) et la langue de recherche (`fr` pour français ou `en` pour anglais).
 - `kafka_data.py`: implémente les structures de données (`KafkaRequest`, `KafkaResponse`) échanger entre les clients et les workers à travers Kafka.
 
 ![image](https://user-images.githubusercontent.com/49156499/115967493-2f468d00-a533-11eb-86c4-fa82c7ec9f3d.png)
 
 
-## Pour aller plus loin
+## Pour aller plus loin (à faire chez vous)
 Implémentez une application de data pipeline ayant les fonctionnalités suivantes:
 - un utilisateur envoie sur un topic Kafka une URL d'un site Internet contenant du texte,
 - un premier groupe de consumers lit l'URL, récupère le contenu de l'URL et réalise un WordCount sur ce contenu. Il publie ensuite le résultat de wordCount (liste de mots et leur occurrence) dans Kafka,
 - un deuxième groupe de consumers lit le résultat de wordCount et cherche la définition de chaque mot. Il renvoie ensuite au client la liste des mots avec leur occurrence et leur définition.
 - l'utilisateur lit ce résultat et... l'enregistre dans une base de données!
+- Vous pouvez rajoutez d'autres langues (espagnol, allemand, chinois, etc.)
 
 L'application doit supporter au moins deux langues.
 
