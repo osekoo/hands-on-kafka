@@ -66,7 +66,9 @@ Le module `dico` permet de chercher la définition d'un mot sur Internet. Il sup
 ![image](https://user-images.githubusercontent.com/49156499/115967493-2f468d00-a533-11eb-86c4-fa82c7ec9f3d.png)
 
 
-## Pour aller plus loin (à faire chez vous)
+## Pour aller plus loin
+_à faire chez vous_  
+
 Implémentez une application de data pipeline ayant les fonctionnalités suivantes:
 - un utilisateur envoie sur un topic Kafka une URL d'un site Internet contenant du texte,
 - un premier groupe de consumers lit l'URL, récupère le contenu de l'URL et réalise un WordCount sur ce contenu. Il publie ensuite le résultat de wordCount (liste de mots et leur occurrence) dans Kafka,
