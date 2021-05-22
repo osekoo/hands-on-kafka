@@ -80,4 +80,4 @@ L'application doit supporter au moins deux langues.
 
 Quelles sont les applications possibles d'un tel programme?
 
-![image](https://user-images.githubusercontent.com/49156499/119236141-1af7af00-bb36-11eb-9a5e-66f34806108f.png)
+![image](https://user-images.githubusercontent.com/49156499/119236199-6ad67600-bb36-11eb-8078-44b68e7dfcdb.png)
