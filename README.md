@@ -78,6 +78,6 @@ Implémentez une application de data pipeline ayant les fonctionnalités suivant
 
 L'application doit supporter au moins deux langues.
 
-Quelles sont les applications possible d'un tel programme?
+Quelles sont les applications possibles d'un tel programme?
 
-![image](https://user-images.githubusercontent.com/49156499/116002149-a1cd7080-a5f8-11eb-968e-1ba077a3c7af.png)
+![image](https://user-images.githubusercontent.com/49156499/119236078-cc4a1500-bb35-11eb-8a90-7e9611658134.png)
