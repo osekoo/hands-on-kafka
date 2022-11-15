@@ -50,7 +50,7 @@ Le module `get_started` permet de publier et de lire des messages. Il contient 3
 - `producer.py`: permet de publier une série de messages dans le bus Kafka. Dans Pycharm, cliquez sur la flèche verte à côté de la ligne `if __name__ == "__main__":` pour exécuter le producer.
 - `consumer.py`: permet de lire les messages publiés par le consumer.
 
-Après exécution de ces deux fichiers, vous pouvez analyser les informations affichées sur le [dashboard](http://localhost:8080).  
+Après exécution de ces deux fichiers, vous pouvez analyser les informations affichées sur le [dashboard](http://localhost:9094).  
 
 ![image](https://user-images.githubusercontent.com/49156499/115967255-da564700-a531-11eb-9a5d-de7ac64d5e67.png)
 
