@@ -14,6 +14,7 @@ class KafkaClient:
         self.response_topic_name = response_topic_name
         self.producer = None
         self.consumer = None
+        self.running = True
 
     def connect(self):
         self.producer = KafkaProducer(bootstrap_servers=BOOTSTRAP_SERVER,
@@ -29,19 +30,24 @@ class KafkaClient:
     def produce(self):
         if not self.producer:
             self.connect()
-        print('enter the word to search')
         word = None
+        print('Enter the word to search > ', end='')
         while word != '':
             word = input()
-            if word != '':
-                data = KafkaRequest(word, self.response_topic_name)
-                self.producer.send(self.dico_topic_name, data)
+            data = KafkaRequest(word, self.response_topic_name)
+            self.producer.send(self.dico_topic_name, data)
+        self.running = False
+        print('Bye.')
 
     def read_definition(self):
         if not self.consumer:
             self.connect()
         for data in self.consumer:
+            if data.value.word == '':
+                break
+            print(f'definition of {data.value.word}: ')
             print(data.value)
+            print('Enter the word to search > ', end='')
 
     @staticmethod
     def data_deserializer(data) -> KafkaResponse:

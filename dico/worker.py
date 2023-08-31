@@ -41,10 +41,13 @@ class KafkaWorker:
         Requests the definition of the word and send it back to the requester
         :return:
         """
-        print(f'handling the word: {data.word} ...')
+        print(f'searching {data.word} ...', end=' ')
         word_def = self.crawler.get_definition(data.word)
+        print(f'done.')
         message = KafkaResponse(data.word, word_def)
+        print(f'sending back the definition of {data.word} ...', end=' ')
         self.producer.send(data.response_topic, value=message)
+        print(f'done.')
 
     @staticmethod
     def data_deserializer(data) -> KafkaRequest:
