@@ -1,9 +1,10 @@
 import json
+
 from kafka import KafkaConsumer, KafkaProducer
 
-from dico.crawler import Crawler, CrawlerEN, CrawlerFR
-from dico.kafka_data import KafkaRequest, KafkaResponse
 from dico.config import BOOTSTRAP_SERVER, TOPIC_DICO_FR, TOPIC_DICO_EN, LANGUAGE_EN
+from dico.crawler import Crawler, CrawlerEN, CrawlerFR
+from dico.kafka_data import KafkaRequest, KafkaResponse, KafkaStreamingRequest
 
 
 class KafkaWorker:
@@ -22,7 +23,7 @@ class KafkaWorker:
         self.consumer = KafkaConsumer(self.topic_name,
                                       bootstrap_servers=BOOTSTRAP_SERVER,
                                       value_deserializer=self.data_deserializer,
-                                      auto_offset_reset='earliest',
+                                      auto_offset_reset='latest',
                                       enable_auto_commit=True,
                                       auto_commit_interval_ms=500,
                                       group_id=self.topic_name + '-group')
@@ -48,6 +49,12 @@ class KafkaWorker:
         print(f'sending back the definition of {data.word} ...', end=' ')
         self.producer.send(data.response_topic, value=message)
         print(f'done.')
+
+        # Spark streaming add-on
+        # print(f'sending a request to spark for further operations...', end=' ')
+        # request = KafkaStreamingRequest(data.word, word_def, data.response_topic)
+        # self.producer.send('spark-streaming-topic', value=request)
+        # print(f'done.')
 
     @staticmethod
     def data_deserializer(data) -> KafkaRequest:

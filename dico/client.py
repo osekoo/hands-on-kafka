@@ -33,7 +33,7 @@ class KafkaClient:
         word = None
         print('Enter the word to search > ', end='')
         while word != '':
-            word = input()
+            word = input()  # read word from the shell
             data = KafkaRequest(word, self.response_topic_name)
             self.producer.send(self.dico_topic_name, data)
         self.running = False

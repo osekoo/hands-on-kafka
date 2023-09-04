@@ -33,3 +33,21 @@ class KafkaResponse:
     def __str__(self):
         return f'definition of `{self.word}`: {self.definition}'
 
+
+class KafkaStreamingRequest:
+    """
+    word definition response structure
+    """
+
+    def __init__(self, word: str, definition: str, response_topic: str):
+        """
+        Constructor
+        :param word: we are looking for the definition of this word
+        :param definition: the definition of the word
+        """
+        self.word = word
+        self.definition = definition
+        self.response_topic = response_topic
+
+    def __str__(self):
+        return f'definition of `{self.word}`: {self.definition}'
