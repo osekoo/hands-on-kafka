@@ -62,7 +62,7 @@ Observe the messages processed by the consumer in the terminal.
 ### 6. Explore the Kafka Dashboard
 Open your browser and navigate to:
 ```
-http://localhost:9094
+http://localhost:9000
 ```
 Use the Kafka dashboard to inspect:
 - Topics
