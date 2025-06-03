@@ -72,7 +72,18 @@ Use the Kafka dashboard to inspect:
 
 ## Exercises
 
-### 1. Change the Consumer Code
+### 1. Re-run the consumer
+#### Steps:
+1. Stop the consumer.
+2. Re-run the consumer:
+   ```bash
+   python consumer.py
+   ```
+   
+#### Questions:
+- What happens to the consumer output when re-run?
+
+### 2. Change the Consumer Code
 
 #### Task:
 Modify the consumer code to specify a **consumer group**. Update the `consumer.py` file with a `group_id` in the KafkaConsumer configuration:
@@ -97,12 +108,21 @@ consumer = KafkaConsumer(
 - What happens to the consumer output when re-run?
 - If multiple consumers are started with the same group ID, how are messages distributed?
 
+#### Steps:
+1. Stop the consumer.
+2. Re-run the consumer:
+   ```bash
+   python consumer.py
+   ```
+   
+#### Questions:
+- What happens to the consumer output when re-run?
+
 #### Expected Observations:
 - Kafka ensures messages are distributed among consumers in the same group. Each partition will be processed by only one consumer in the group.
 
 
-
-### 2. Change the Producer Code
+### 3. Change the Producer Code
 
 #### Task:
 Update the producer to publish numbers with a **key** where the key is `n % m` (where `m` is the number of partitions). Modify `producer.py` as follows:
