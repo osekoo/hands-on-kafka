@@ -92,7 +92,8 @@ consumer = KafkaConsumer(
     TOPIC_NAME,
     bootstrap_servers=BROKER,
     value_deserializer=data_deserializer,
-    auto_offset_reset='earliest'
+    auto_offset_reset='earliest',
+    enable_auto_commit=True,
      # Add group_id
 )
 ```
